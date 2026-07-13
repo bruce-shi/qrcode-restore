@@ -1,0 +1,10 @@
+.DS_Store
+*-recovery/
+browser/node_modules/
+browser/dist/
+browser/coverage/
+browser/.wrangler/
+browser/*.tsbuildinfo
+browser/src/wasm/pkg/
+target/
+crates/qr-restore-wasm/pkg/

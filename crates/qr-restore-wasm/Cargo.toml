@@ -1,0 +1,28 @@
+[package]
+name = "qr-restore-wasm"
+version = "0.1.0"
+edition = "2024"
+description = "Browser-safe QR structure and soft-decision primitives for QR Restore"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+js-sys = "0.3"
+photon-rs = "0.3.3"
+reed-solomon = "0.2.1"
+regex = { version = "1.11", default-features = false, features = ["perf", "std", "unicode-perl"] }
+rqrr = { version = "0.10.1", default-features = false }
+rxing = { version = "0.9.1", default-features = false, features = ["decoders", "encoding_rs", "qrcode"] }
+serde = { version = "1.0", features = ["derive"] }
+serde-wasm-bindgen = "0.6"
+wasm-bindgen = "0.2"
+
+[dev-dependencies]
+image = { version = "0.25", default-features = false, features = ["png"] }
+qrcode = { version = "0.14", default-features = false }
+serde_json = "1.0"
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-O3", "--all-features"]

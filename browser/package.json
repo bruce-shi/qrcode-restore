@@ -1,0 +1,34 @@
+{
+  "name": "qr-restore-browser",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "npm run build:wasm",
+    "dev": "vite",
+    "build:wasm": "wasm-pack build ../crates/qr-restore-wasm --target web --out-dir ../../browser/src/wasm/pkg --release",
+    "build": "npm run build:wasm && tsc -b && vite build",
+    "test": "npm run build:wasm && vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -b",
+    "preview": "vite preview",
+    "cf:dev": "npm run build && wrangler dev",
+    "deploy:dry-run": "npm run build && wrangler deploy --dry-run",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.1.1",
+    "typescript": "^5.9.0",
+    "vite": "8.1.4",
+    "vitest": "4.1.10",
+    "wasm-pack": "0.15.0",
+    "wrangler": "^4.0.0"
+  }
+}
